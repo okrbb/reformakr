@@ -696,10 +696,10 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     
                     <!-- LEFT COLUMN: REAL MAP (High legibility layout) -->
-                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden min-h-[500px]">
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden h-[600px] lg:sticky lg:top-4">
                         
                         <div class="flex items-center justify-between mb-3 relative z-10">
                             <span class="text-xs font-mono text-brand-400 flex items-center tracking-wide uppercase">
@@ -1480,6 +1480,7 @@
         // Reset map view
         function resetMapView() {
             if (map) {
+                map.invalidateSize();
                 map.fitBounds(slovakiaBounds, { padding: [10, 10], animate: true, duration: 1.0 });
                 updateMapMarkerHighlight(null);
                 updateGeoJsonHighlight(null);
