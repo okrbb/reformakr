@@ -263,6 +263,37 @@
         .animate-pulse-right:hover {
             animation-play-state: paused;
         }
+    
+        /* GLASS CARDS & AMBIENT GLOW DESIGN SYSTEM */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(249, 115, 22, 0.4);
+            box-shadow: 0 12px 35px -10px rgba(249, 115, 22, 0.18);
+            transform: translateY(-2px);
+        }
+        .ambient-glow-brand {
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.07) 0%, rgba(15, 23, 42, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .ambient-glow-blue {
+            position: absolute;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, rgba(15, 23, 42, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
     </style>
 </head>
 
@@ -574,9 +605,11 @@
                 </div>
             </div>
 
+            
+
             <!-- Bod 3: Vizuálna schéma Organizačnej architektúry (Podstatné zmeny novely) -->
             <div
-                class="mt-10 max-w-5xl mx-auto bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-7 shadow-2xl">
+                class="mt-10 max-w-5xl mx-auto glass-card rounded-3xl p-6 sm:p-7 shadow-2xl relative z-10">
                 <div class="text-center max-w-2xl mx-auto mb-8">
                     <span class="text-brand-500 font-bold uppercase tracking-wider text-xs">Transformácia
                         kompetencií</span>
@@ -877,10 +910,19 @@
 
                         <!-- Sidebar Stats/Metadata for Selected Stage -->
                         <div class="lg:col-span-4 bg-slate-950/40 border border-slate-800 rounded-2xl p-5 space-y-4">
+                            <!-- Kľúčový míľnik etapy -->
+                            <div class="bg-brand-500/10 border border-brand-500/30 rounded-xl p-3.5 space-y-1">
+                                <div class="flex items-center space-x-1.5 text-brand-400 font-mono text-[10px] font-bold uppercase tracking-wider">
+                                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-ping inline-block"></span>
+                                    <span>Kľúčový míľnik etapy</span>
+                                </div>
+                                <p class="text-xs font-semibold text-white leading-snug" id="dynamic-stage-milestone">
+                                    Schválenie nového cieľového organizačného modelu reformy vedením rezortu.
+                                </p>
+                            </div>
                             <div class="flex justify-between text-xs pb-3 border-b border-slate-800/50">
                                 <span class="text-slate-400">Celkové Trvanie:</span>
-                                <span class="font-bold text-white text-right" id="dynamic-stage-duration">7
-                                    mesiacov</span>
+                                <span class="font-bold text-white text-right" id="dynamic-stage-duration">7 mesiacov</span>
                             </div>
                             <div class="flex justify-between text-xs pb-3 border-b border-slate-800/50">
                                 <span class="text-slate-400 font-medium">Zodpovedný tím:</span>
@@ -910,7 +952,7 @@
 
             <!-- Bod 4: Vizuálna kartička Finančný a rozpočtový prehľad reformy (Kompaktný a vyvážený dizajn) -->
             <div
-                class="mt-10 max-w-5xl mx-auto bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-7 shadow-2xl">
+                class="mt-10 max-w-5xl mx-auto glass-card rounded-3xl p-6 sm:p-7 shadow-2xl relative z-10">
                 <div
                     class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
                     <div>
@@ -1067,7 +1109,8 @@
 
 
         <!-- Regionálny prehľad a vyhľadávač s REAL GEOGRAPHIC MAPOU -->
-        <section id="regionalny-hladac" class="py-20 bg-darkblue-950">
+        <section id="regionalny-hladac" class="py-20 bg-darkblue-950 relative overflow-hidden">
+            <div class="ambient-glow-blue top-20 right-10"></div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <span class="text-brand-500 font-extrabold uppercase tracking-wider text-3xl sm:text-4xl">Regionálny
@@ -1075,7 +1118,7 @@
                 </div>
 
                 <!-- Dashboard Layout: Map on left, detail / search on right -->
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 lg:p-8 shadow-2xl space-y-8">
+                <div class="glass-card rounded-3xl p-6 lg:p-8 shadow-2xl space-y-8 relative z-10">
 
                     <!-- Dynamic search bars and controls at the top of dashboard -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1123,6 +1166,9 @@
                         <!-- LEFT COLUMN: REAL MAP (High legibility layout) -->
                         <div
                             class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between relative overflow-hidden h-[600px] lg:sticky lg:top-4">
+
+                            
+
 
                             <div class="flex items-center justify-between mb-3 relative z-10">
                                 <span
@@ -1338,34 +1384,34 @@
                                 </thead>
                                 <tbody class="divide-y divide-slate-800/60">
                                     <tr>
-                                        <td class="p-4 font-semibold text-slate-100">Neschválenie organizačnej zmeny na
+                                        <td class="p-4 font-semibold text-slate-100"><span class="px-2 py-0.5 bg-red-500/15 text-red-400 border border-red-500/30 text-[9px] font-mono font-bold rounded uppercase mb-1 inline-block">Vysoké riziko</span><br>Neschválenie organizačnej zmeny na
                                             centrálnej úrovni (SKR)</td>
                                         <td class="p-4 text-slate-400 leading-relaxed">Pravidelná komunikácia s vedením
                                             MV SR. Včasné pripomienkovanie a predloženie organizačného poriadku do
                                             schvaľovacieho procesu.</td>
                                     </tr>
                                     <tr>
-                                        <td class="p-4 font-semibold text-slate-100">Neschválenie interných riadiacich
+                                        <td class="p-4 font-semibold text-slate-100"><span class="px-2 py-0.5 bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[9px] font-mono font-bold rounded uppercase mb-1 inline-block">Stredné riziko</span><br>Neschválenie interných riadiacich
                                             aktov a legislatívy na regionálnej úrovni</td>
                                         <td class="p-4 text-slate-400 leading-relaxed">Komunikácia s prednostami
                                             okresných úradov a včasné predloženie návrhov do MPK a VPK.</td>
                                     </tr>
                                     <tr>
-                                        <td class="p-4 font-semibold text-slate-100">Nepodarí sa obsadiť voľné pozície
+                                        <td class="p-4 font-semibold text-slate-100"><span class="px-2 py-0.5 bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[9px] font-mono font-bold rounded uppercase mb-1 inline-block">Stredné riziko</span><br>Nepodarí sa obsadiť voľné pozície
                                             novými odborníkmi</td>
                                         <td class="p-4 text-slate-400 leading-relaxed">Aktívna kampaň a komunikácia s
                                             akademickou obcou a verejnosťou. Ponuka osobného rozvoja a atraktívneho IKT
                                             vybavenia.</td>
                                     </tr>
                                     <tr>
-                                        <td class="p-4 font-semibold text-slate-100">Kapacitné a procesné konflikty s
+                                        <td class="p-4 font-semibold text-slate-100"><span class="px-2 py-0.5 bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[9px] font-mono font-bold rounded uppercase mb-1 inline-block">Nízke riziko</span><br>Kapacitné a procesné konflikty s
                                             inými projektami MV SR</td>
                                         <td class="p-4 text-slate-400 leading-relaxed">Súčinnosť a pravidelné
                                             koordinačné stretnutia projektových tímov s vlastníkmi ostatných procesov.
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="p-4 font-semibold text-slate-100">Riziko nedodržania harmonogramu
+                                        <td class="p-4 font-semibold text-slate-100"><span class="px-2 py-0.5 bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[9px] font-mono font-bold rounded uppercase mb-1 inline-block">Stredné riziko</span><br>Riziko nedodržania harmonogramu
                                             projektového plánu a obstarávania IKT</td>
                                         <td class="p-4 text-slate-400 leading-relaxed">Zadefinovanie reálneho časového
                                             harmonogramu, včasné vypracovanie podkladov pre verejné obstarávanie IKT
@@ -1442,6 +1488,7 @@
         // 2. STAGES DATABASE (UP TO DATE - 7 PHASES FROM NEW DOC)
         const projectStages = {
             1: {
+                milestone: "Schválenie nového cieľového organizačného modelu reformy vedením rezortu.",
                 tag: "Etapa 1 / 7",
                 title: "Organizácia a procesy",
                 desc: "Vytvorenie novej, procesne orientovanej organizačnej štruktúry na centrálnej úrovni (SKR) a regionálnej úrovni (zrušenie/presun odborov KR na OÚ typu 3 a 2 pod OÚ v sídle kraja s detašovanými pracoviskami).",
@@ -1463,6 +1510,7 @@
                 vychodiskovy: "Decentrálny model, rozdiely v metodike a personálnom obsadení."
             },
             2: {
+                milestone: "Predloženie celého balíka noviel zákonov do MPK a VPK.",
                 tag: "Etapa 2 / 7",
                 title: "Legislatíva",
                 desc: "Dosiahnutie legislatívnych úprav na celoštátnej úrovni (Čl. I zákon č. 42/1994 Z. z., Čl. II zákon č. 7/2010 Z. z. o ochrane pred povodňami), ktoré sú predpokladom pre presun agendy.",
@@ -1484,6 +1532,7 @@
                 vychodiskovy: "Roztrieštená a nejednotná legislatívna úprava s disproporciami."
             },
             3: {
+                milestone: "Realizácia komunikačnej kampane pre zamestnancov a verejnosť.",
                 tag: "Etapa 3 / 7",
                 title: "Komunikácia",
                 desc: "Vytvorenie komplexného a transparentného komunikačného plánu. Zaručenie prísunu včasných a relevantných informácií pre zamestnancov, partnerov i občanov SR.",
@@ -1505,6 +1554,7 @@
                 vychodiskovy: "Chýbajúce organizované a cielené aktivity pre budovanie povedomia o krízovom riadení."
             },
             4: {
+                milestone: "Príprava komplexného zoznamu presúvaných zamestnancov a miest.",
                 tag: "Etapa 4 / 7",
                 title: "Riadenie a podpora",
                 desc: "Zapojenie novovytvorených krajských odborov a ich pracovníkov do všetkých podporných, rozpočtových a riadiacich procesov v rámci štruktúr MV SR.",
@@ -1526,6 +1576,7 @@
                 vychodiskovy: "Agendy starých obvodných úradov sú prepojené na staré rozpočtové a podporné mechanizmy."
             },
             5: {
+                milestone: "Sfinalizovanie majetkoprávnych protokolov a prevzatie budov.",
                 tag: "Etapa 5 / 7",
                 title: "Ľudské zdroje",
                 desc: "Zabezpečenie personálnych kapacít pre plnohodnotné fungovanie nového systému. Vytvorenie atraktívneho prostredia pre stabilizáciu existujúcich odborníkov a nábor nových špecialistov.",
@@ -1547,6 +1598,7 @@
                 vychodiskovy: "Zamestnanci rozptýlení na 72 samostatných odboroch KR."
             },
             6: {
+                milestone: "Fyzické odovzdanie spisov, registratúr a delimitácia agendy.",
                 tag: "Etapa 6 / 7",
                 title: "Prechod dokumentácie",
                 desc: "Úspešný prechod celej registratúry, spisov, agendy a historických dát na novovzniknuté krajské odbory pri zachovaní kontinuity štátnej správy v listinnej aj digitálnej podobe.",
@@ -1568,6 +1620,7 @@
                 vychodiskovy: "Časť dokumentácie je iba v papierovej podobe, rozptýlená po rôznych lokalitách SR."
             },
             7: {
+                milestone: "Plné spustenie 8 Krajských centier CO a KP k 1.3.2027.",
                 tag: "Etapa 7 / 7",
                 title: "Majetok",
                 desc: "Identifikácia, zmapovanie a administratívno-právny prevod hnuteľného a nehnuteľného štátneho majetku z obvodov na novovzniknuté krajské útvary.",
@@ -1616,6 +1669,7 @@
             document.getElementById('dynamic-stage-responsible').innerText = stage.responsible;
             document.getElementById('dynamic-stage-legislation').innerText = stage.legislation;
             document.getElementById('dynamic-stage-vychodiskovy').innerText = stage.vychodiskovy;
+            document.getElementById('dynamic-stage-milestone').innerText = stage.milestone || '';
 
             const actList = document.getElementById('dynamic-stage-activities');
             actList.innerHTML = stage.activities.map(act => `<li>• ${act}</li>`).join('');
@@ -2257,6 +2311,11 @@
 
         // Search by typing
         function searchDistrict() {
+            const mapBox = document.getElementById('leaflet-slovakia-map');
+            if (mapBox) {
+                mapBox.classList.add('ring-2', 'ring-brand-500', 'transition-all');
+                setTimeout(() => mapBox.classList.remove('ring-2', 'ring-brand-500'), 1000);
+            }
             const query = document.getElementById('district-search-input').value.toLowerCase().trim();
             document.getElementById('region-select').value = "";
 
